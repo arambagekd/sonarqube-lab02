@@ -13,7 +13,7 @@ public class UserService {
     // ✅ FIXED: SQL Injection - using PreparedStatement
     public void findUser(String username) throws SQLException {
         // ✅ SonarQube fix: try-with-resources to auto-close Connection & PreparedStatement
-        String query = "SELECT * FROM users WHERE name = ?";
+        String query = "SELECT id, name, email FROM users WHERE name = ?";
         try (Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost/db", "root", password);
                 PreparedStatement pst = conn.prepareStatement(query)) {
